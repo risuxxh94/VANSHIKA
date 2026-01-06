@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Vanshikha! 🐼</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;700&display=swap');
+
+        :root {
+            --gold: #d4af37;
+            --panda-black: #1a1a1a;
+            --bamboo-green: #2d6a4f;
+            --ivory: #fffdfa;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            background-color: #0b090a;
+            color: var(--ivory);
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        #floating-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .floating-item {
+            position: absolute;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        .walking-panda {
+            position: fixed;
+            bottom: 0;
+            font-size: 40px;
+            z-index: 150;
+            animation: walk 15s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes walk {
+            0% { left: -50px; transform: scaleX(1); }
+            48% { transform: scaleX(1); }
+            50% { left: 100%; transform: scaleX(-1); }
+            98% { transform: scaleX(-1); }
+            100% { left: -50px; }
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 80px 20px;
+            box-sizing: border-box;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border: 2px solid var(--gold);
+            padding: 45px 30px;
+            border-radius: 25px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .cursive {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: var(--gold);
+            margin: 0;
+        }
+
+        .photo-frame {
+            width: 180px; height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--gold);
+            padding: 5px;
+            background: white;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        /* --- CAKE SYSTEM --- */
+        .cake-container {
+            position: relative;
+            cursor: pointer;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cake {
+            width: 150px;
+            height: 120px;
+            background: #fff;
+            border-radius: 20px 20px 5px 5px;
+            position: relative;
+            border: 3px solid var(--panda-black);
+            transition: transform 0.5s;
+        }
+
+        .cake::after { /* Panda Eyes on Cake */
+            content: '🐼';
+            position: absolute;
+            top: 30%; left: 50%;
+            transform: translateX(-50%);
+            font-size: 50px;
+        }
+
+        .candle {
+            width: 10px; height: 30px;
+            background: var(--gold);
+            position: absolute;
+            top: -30px; left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .flame {
+            width: 12px; height: 18px;
+            background: orange;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px; left: 50%;
+            transform: translateX(-50%);
+            animation: flicker 0.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            from { opacity: 0.8; transform: translateX(-50%) scale(1); }
+            to { opacity: 1; transform: translateX(-50%) scale(1.2); }
+        }
+
+        .knife {
+            font-size: 40px;
+            position: absolute;
+            right: -60px;
+            top: 20px;
+            transition: 0.3s;
+            animation: point 1s infinite;
+        }
+
+        @keyframes point {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+        }
+
+        .cake-cut .cake {
+            transform: scaleX(0.9);
+            border-right: 5px dashed red;
+        }
+
+        .cake-cut .flame { display: none; }
+        .cake-cut .knife { display: none; }
+        .cake-cut::before {
+            content: 'HAPPY BIRTHDAY!';
+            position: absolute;
+            top: -50px;
+            color: var(--gold);
+            font-weight: bold;
+            font-family: 'Cinzel';
+        }
+
+        .magic-button {
+            background: var(--gold);
+            color: black;
+            border: none;
+            padding: 15px 40px;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 30px;
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 70px;
+            right: 25px;
+            background: white;
+            border: 1px solid var(--gold);
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="floating-container"></div>
+    <div class="walking-panda">🐼</div>
+
+    <button class="music-btn" onclick="toggleMusic()">🎵</button>
+   
+
+    <section>
+        <p class="cursive">Happy Birthday 🐼</p>
+        <h2 style="font-family:'Cinzel'; letter-spacing:5px; color:var(--gold);">VANSHIKHA MISHRA</h2>
+        <div class="glass-card">
+            <img src="https://i.ibb.co/R4cS1cSw/images-3.jpg" class="photo-frame">
+            <p style="font-style: italic; font-size: 1.2rem;">"To the BOOOOOOOOOTTTIPPPHHOOLLLEESSTTTTTTT BRAAAAAAVVVVVEEESSTTTTT GUUUURRLLLL!🎀👹🧿💗"</p>
+        </div>
+        <p style="margin-top:40px; color:var(--gold); letter-spacing:3px; animation: bounce 2s infinite;">SCROLL FOR BAMBOO ↓</p>
+    </section>
+
+    <section>
+        <div class="glass-card">
+            <h2 class="cursive">My Secret Note 🐾</h2>
+            <p style="line-height: 2; font-style: italic; font-size: 1.1rem;">
+                HEEELLLOWWW VAAAAAANSSSHHHHHIIIKKKKKAAAAAAA! 👹 🎀 🧿 
+                <br><br>
+                YYYYYYYYYYAYAYYAYAYAYYAYAYYYYYY...finally aaj 7 january h😍..HAAAAAAAPPPPPIIIIIIEEEESSSSSTTTTTTTTTT BIIIIIIIIIIIIRRRRRRTTTTHHHHHHHDDDDAAAAAAAYYYYYYYYYYYYYYYYYY INNNNNNNNNNNNN ADDDDDDDDDDDDDDDDDDVAAAAAAAAAAANCCCEEEEEEEEEEEEEEEEEE VAAAAAANSSSHHHHHIIIKKKKKAAAAAAA MISSHRRRAAAAAAAA 👹 🎀 🧿 🥰 😍 💗..Aap jeeyo 100 saal khush rho hmesha Bhagwan aapko hmedha khush rakhe aapki sari wish puri ho...Chalo koi wish manglo isi baat p..Kya gift chaiye tell..aaj tmhr din h😍...coding toh bs ek bahana tha, batana toh ye tha ki aap kitne special ho. 🤪.. 
+                <br><br>
+                I hope your day is filled with unlimited sleep, snacks, and love! HAAAAAAAAAAAAPPPPPPPPPPPIIIIIIIEEESSSSSTTTTTTTTTTTTTTT BIIIIIIIIIIIIRRRRRRTTTTHHHHHHHDDDDAAAAAAAYYYYYYYYYYYYYYYYYY 💗👹🎀🧿
+            </p>
+            <p class="cursive" style="font-size: 2rem;">— 👉🏻👈🏻🧿🥰</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="glass-card">
+            <h2 style="font-family:'Cinzel';">Cut Your Panda Cake!</h2>
+            <p>(Click the knife to cut)</p>
+            
+            <div class="cake-container" id="cakeContainer" onclick="cutCake()">
+                <div class="candle"><div class="flame"></div></div>
+                <div class="cake"></div>
+                <div class="knife">🔪</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="glass-card">
+            <h2 style="font-family:'Cinzel'; letter-spacing:5px;">Ready for the Finale?</h2>
+            <p>Click for a Panda Party!</p>
+            <button class="magic-button" onclick="startSurprise()">Celebrate! 🐾</button>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        const audio = document.getElementById('track');
+        function toggleMusic() {
+            return audio.paused ? audio.play() : audio.pause();
+        }
+
+        function cutCake() {
+            const cake = document.getElementById('cakeContainer');
+            if(!cake.classList.contains('cake-cut')) {
+                cake.classList.add('cake-cut');
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            }
+        }
+
+        function startSurprise() {
+            var end = Date.now() + (5 * 1000);
+            var colors = ['#ffffff', '#000000', '#d4af37', '#2d6a4f'];
+            (function frame() {
+              confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: colors });
+              confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: colors });
+              if (Date.now() < end) { requestAnimationFrame(frame); }
+            }());
+        }
+
+        const icons = ['🐼', '🎋', '🍃', '🐾', '💗'];
+        function createFloatingItem() {
+            const container = document.getElementById('floating-container');
+            const item = document.createElement('div');
+            item.classList.add('floating-item');
+            item.innerText = icons[Math.floor(Math.random() * icons.length)];
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = Math.random() * 3 + 4 + 's';
+            container.appendChild(item);
+            setTimeout(() => { item.remove(); }, 6000);
+        }
+        setInterval(createFloatingItem, 500);
+
+        document.body.addEventListener('click', () => { audio.play(); }, {once: true});
+    </script>
+</body>
+              </html>
+  
